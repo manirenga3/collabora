@@ -46,5 +46,8 @@ RUN useradd -m admin && echo "admin:admin" | chpasswd && adduser admin sudo
 # switch to cool user (use numeric user id to be compatible with Kubernetes Pod Security Policies)
 USER 104
 
+RUN chmod +x start-collabora-online.sh
+RUN chmod +x start-collabora-online.pl
+
 # Entry point
 CMD ["/start-collabora-online.sh"]
