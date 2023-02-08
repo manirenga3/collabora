@@ -39,15 +39,15 @@ RUN rm -rf /install-collabora-online-ubuntu.sh
 COPY /scripts/start-collabora-online.sh /
 COPY /scripts/start-collabora-online.pl /
 
+RUN chmod +x start-collabora-online.sh
+RUN chmod +x start-collabora-online.pl
+
 EXPOSE 9980
 
 RUN useradd -m admin && echo "admin:admin" | chpasswd && adduser admin sudo
 
 # switch to cool user (use numeric user id to be compatible with Kubernetes Pod Security Policies)
 USER 104
-
-RUN chmod +x start-collabora-online.sh
-RUN chmod +x start-collabora-online.pl
 
 # Entry point
 CMD ["/start-collabora-online.sh"]
